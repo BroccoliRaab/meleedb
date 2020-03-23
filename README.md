@@ -11,5 +11,4 @@ melee_hitboxes
 
 character_attributes
 
-
-I will add a table for data that can be generated from these other tables, like sheild advantage.
+The melee_hitboxes files contain the data on the hitboxes pulled from the game files. The melee_hitboxes_extended files contain all the same information with a couple added columns.
