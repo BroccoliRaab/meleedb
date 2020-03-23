@@ -1,6 +1,80 @@
+<meta charset="utf8" />
 <html>
-<header><title>This is title</title></header>
-<body>
-Hello world
-</body>
+<head>
+  <meta charset="utf8">
+  <title>MELEEDB</title>
+
+</head>
+  <script src='sql-wasm.js'></script>
+  <script>
+    // The `initSqlJs` function is globally provided by all of the main dist files if loaded in the browser.
+    // We must specify this locateFile function if we are loading a wasm file from anywhere other than the current html page's folder.
+
+    var tableCreate = function () {
+    function valconcat(vals, tagName) {
+    if (vals.length === 0) return '';
+    var open = '<'+tagName+'>', close='</'+tagName+'>';
+    return open + vals.join(close + open) + close;
+    }
+    return function (columns, values){
+    var tbl  = document.createElement('table');
+    var html = '<thead>' + valconcat(columns, 'th') + '</thead>';
+    var rows = values.map(function(v){ return valconcat(v, 'td'); });
+    html += '<tbody>' + valconcat(rows, 'tr') + '</tbody>';
+      tbl.innerHTML = html;
+    return tbl;
+    }
+    }();
+
+    initSqlJs().then(function(SQL){
+      //Create the database
+      var xhr = new XMLHttpRequest();
+      // For example: https://github.com/lerocha/chinook-database/raw/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite
+      xhr.open('GET', 'meleedb.db', true);
+      xhr.responseType = 'arraybuffer';
+
+      xhr.onload = e => {
+        var uInt8Array = new Uint8Array(xhr.response);
+        var db = new SQL.Database(uInt8Array);
+        
+        document.getElementById("execute").onclick = function () { 
+
+                var res = db.exec(document.getElementById('commands').value);
+            for ( var i = 0 ; i<res.length;i++){
+                
+                var t = tableCreate(res[i].columns, res[i].values);
+                document.getElementById('output').appendChild(t);
+            }
+        };
+
+      };
+      xhr.send();
+
+      // Prepare a statement
+
+    });
+  </script>
+  <body>
+   <h1>Meleedb sqlite database</h1>
+
+<main>
+    <label for='commands'>Enter some SQL</label>
+    <br>
+
+    <textarea id="commands">SELECT character,move,id,start FROM melee_hitboxes WHERE start<6;
+SELECT character, jumpStartup AS JumpSquat FROM character_attributes;
+    </textarea>
+    <div></div>
+
+        
+    <button id="execute" class="button">Execute</button>
+
+
+
+    <div id="error" class="error"></div>
+
+    <div id="output">Results will be displayed here</div>
+</main>
+
+  </body>
 </html>

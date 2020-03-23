@@ -1,0 +1,118 @@
+
+body {
+    background: #000;
+    color: #eee;
+    font-family: sans-serif;
+    min-width: 300px;
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.5em 1em;
+  }
+  
+  textarea {
+      min-width: 700px;
+      min-height: 90px;
+      width: 980px;
+      height: 120px;
+  
+  }
+  
+  h1,h2,h3,h4,h5,h6 {
+    font-family: 'Quicksand', sans-serif;
+    color: #ccc;
+  }
+  h1 {
+    margin-bottom: 40px;
+  }
+  h2 {
+    margin-top: 40px;
+    border-bottom: 1px solid #333;
+  }
+  h3,h5 {
+    font-style: italic;
+  }
+  p {
+    padding-left: 0.5em;
+  }
+  code {
+    color: #ff8;
+    background: #1d1d1d;
+    display: block;
+    margin: 0.4em 1.5em;
+    padding: 0.6em 1.5em;
+    border: 1px solid #333;
+    border-radius: 3px;
+  }
+  a {
+    color: #77e;
+  }
+  a:hover {
+    color: #aaf;
+  }
+  a:visted {
+    color: #ddf;
+  }
+  hr {
+    border: 0;
+    height: 1px;
+    box-shadow: 0 0px 2px 0px #333;
+    background-image: linear-gradient(to right, rgba(200, 200, 200, 0), rgba(200, 200, 200, 0.4), rgba(200, 200, 200, 0));
+  }
+  table {
+    border-collapse: collapse;
+    border: 1px solid #aaa;
+    caption-side: bottom;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    background: #1d1d1d;
+  }
+  table th, table td {
+    border: 1px solid #aaa;
+    padding: 0.1em 0.5em;
+  }
+  table th {
+    font-family: 'Quicksand', sans-serif;
+    color: #111;
+    background: #bbb;
+  }
+  table caption, figcaption {
+    text-align: left;
+    font-style: italic;
+    margin-top: 0.5em;
+  }
+  figure {
+    border: 1px solid #333;
+    background: #111;
+    margin: 0;
+    padding: 0.5em;
+    margin-bottom: 1em;
+  }
+  .csss-float-left::after, .csss-float-right::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .csss-float-left img, .csss-float-left figure {
+    float: left;
+    margin-right: 2em;
+  }
+  .csss-float-right img, .csss-float-right figure {
+    float: right;
+    margin-left: 2em;
+  }
+  .csss-float-left img, .csss-float-right img {
+    margin-bottom: 1em;
+  }
+  .csss-float-left figure img, .csss-float-right figure img {
+    /* Don't float an image inside a floating figure. */
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+  
+  
